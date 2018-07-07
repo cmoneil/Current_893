@@ -25,8 +25,8 @@ var cookieParser = require('cookie-parser');
 var access_token;
 var db = require("../models")
 
-var client_id = 'd22ada9caa744773ae3e98066eb8a0fb'; // Your client id
-var client_secret = 'c800aa81dd244f6f9ec0dc09556dae2e'; // Your secret
+var client_id = 'bbe424c9f5cd468884105db9c047156e'; // Your client id
+var client_secret = '4dff3cc08f7f4cd8932cc54fa2038c69'; // Your secret
 var redirect_uri = 'https://peaceful-everglades-78880.herokuapp.com//callback'; // Your redirect uri
 
 /**
