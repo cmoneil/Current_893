@@ -27,7 +27,7 @@ var db = require("../models")
 
 var client_id = 'bbe424c9f5cd468884105db9c047156e'; // Your client id
 var client_secret = '4dff3cc08f7f4cd8932cc54fa2038c69'; // Your secret
-var redirect_uri = 'https://peaceful-everglades-78880.herokuapp.com//callback'; // Your redirect uri
+var redirect_uri = 'https://peaceful-everglades-78880.herokuapp.com/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
