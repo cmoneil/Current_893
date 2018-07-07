@@ -1,0 +1,168 @@
+body {
+  background-image: url(../img/currentBackground.jpg)
+}
+.headline{
+  height: 200px;
+}
+
+.currentLogo{
+  display: block;
+  width: 100%;
+  background-image:  url(../img/currentLogo.svg);
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+.tableBackground {
+  background-image: url(../img/headerBackground.jpg);
+  padding-bottom: 65px;
+
+}
+.tableScroll{
+  height: 500px;
+  overflow: scroll;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 0px;
+  overflow-x:auto;
+  overflow-y:scroll;
+  background: #fff;
+}
+
+h3{
+  text-align: center;
+  background-color: rgba(96, 74, 50, 0.5);
+  color: #fff;
+}
+
+#userInput  {
+  padding-top: 50px;
+}
+
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #a82219;
+}
+
+.rank{
+  padding-left: 0;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 500;
+  font-size: 12px;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+.playlistTable{
+  width: 100px;
+}
+.searchTable {
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.jumbotron {
+  
+  background-position: center;
+}
+h1{
+  font-size: 60px;
+  font-weight: bold;
+  text-align: left;
+  color: rgba(96, 74, 50)
+  /*transform: scale(3,2);
+  */
+}
+
+li {
+    padding: 5px;
+    margin: 5px;
+    background: #faebd7;
+    border: black solid 2px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  input {
+    width: 50%;
+    border: black solid 2px;
+    border-radius: 10px;
+  }
+  
+  .change-devour {
+    text-align: right;
+
+  }
+  .label {
+    font-weight: bold;
+  }
+  
+  .create-update-form {
+    padding: 5px;
+    margin: 5px;
+    background: aqua;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+
+  .btn{
+    background-color:rgb(167,40,37);
+    color: #fff;
+  }
+
+  i {
+    font-size: 30px;
+    color: #1db954;
+
+  }
+
+  .createPlay {
+    margin: 10px 260px;
+
+  }
+
+  .img-modal{
+    margin-left: 100px;
+  }
+
+  .modal-content{
+    background-image: url(../img/currentBackground.jpg)
+  }
+
+  .spotButton {
+    margin-top: 60px;
+    font-family: Circular,Helvetica,Arial,sans-serif;
+    color: #fff;
+    background-color: #1db954;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 11px 32px 9px;
+    transition-property: background-color,border-color,color,box-shadow,filter;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+  }

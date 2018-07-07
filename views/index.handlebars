@@ -1,0 +1,133 @@
+<div class="container-fluid currentLogo">
+    <div class="row headline">
+        <div class="col-lg-6 col-sm-8">
+            <a href="https://thecurrent.org">
+            </a>
+        </div>
+        <div class="col-lg-6 col-sm-4 title">
+            <h1>893 Essential Songs Playlist Generator</h1>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 col-sm-12">
+            <h2>Search</h2>
+            <form id="searchList" class="form-inline">
+
+
+                <div class="form-group">
+                    <label class="my-1 mr-2">Keyword:</label>
+                    <input type="text" class="my-1 mr-2 form-control" id="search" name="searchBar">
+                </div>
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search By:</label>
+                <select class="custom-select my-1 mr-sm-2" id="searchVal">
+                    <option selected="selected">Choose...</option>
+                    <option value="rank">Rank</option>
+                    <option value="artist">Artist</option>
+                    <option value="song">Song</option>
+                    <option value="year">Year</option>
+                </select>
+
+                <button type="submit" class="btn btn-danger">Search</button>
+            </form>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <form id="userInput" class="form-inline">
+                <div class="form-group">
+                    <label class="my-1 mr-2">User name:</label>
+                    <input type="text" class="my-1 mr-2 form-control" id="searchName" name="userName">
+
+                    <button type="submit" class="userBtn btn btn-danger">Create User</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3 col-sm-12">
+            <a href="/login" class="spotButton btn ">Log in with Spotify</a>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container-fluid tableBackground">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <h3>Song Results</h3>
+            <div class="tableScroll">
+                <table class="table table-hover table-responsive cellpadding=" 0 " cellspacing="0 " border="0 "">
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">Song</th>
+                            <th scope="col">Album</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Add</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="searchTable">
+
+                        {{#each top893}} {{#unless devoured}} {{> list/listBlock }} {{/unless}} {{/each}}
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 playlistTable">
+            <h3>Playlist</h3>
+            <div class="tableScroll">
+                <table class="table table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">Song</th>
+                            <th scope="col">Album Cover</th>
+                            <th scope="col">Album</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Preview</th>
+                            <th scope="col">Open in Spotify</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="playTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+             <button type="submit" class="createPlay btn btn-danger">Create Playlist</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-launch">
+            <div class="modal-header">
+                <h5 class="col-12 modal-title text-center" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="img-modal"></div>
+            <div class="modal-body">
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
