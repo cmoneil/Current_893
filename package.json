@@ -28,10 +28,10 @@
     "mysql2": "^1.5.3",
     "nmp": "^1.0.3",
     "node-spotify-api": "^1.0.7",
-    "npm": "^6.1.0",
+    "npm": "^6.4.1",
     "querystring": "^0.2.0",
     "request": "^2.87.0",
     "sequelize": "^4.38.0",
-    "spotify-web-api-node": "^3.1.1"
+    "spotify-web-api-node": "^4.0.0"
   }
 }

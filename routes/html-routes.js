@@ -5,29 +5,24 @@
 // Dependencies
 require("dotenv").config();
 var keys = require('../public/assets/js/keys');
-//var spotToken = require('./logic');
-//var spotAccess = spotToken.setAccessToken;
-
-
 var SpotifyWebApi = require('spotify-web-api-node');
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi(keys.spotify);
-
-// console.log(spotAccess)
 
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 // =============================================================
-//var path = require("path");
 var access_token;
 var db = require("../models")
 
-var client_id = 'bbe424c9f5cd468884105db9c047156e'; // Your client id
-var client_secret = '4dff3cc08f7f4cd8932cc54fa2038c69'; // Your secret
-var redirect_uri = 'https://peaceful-everglades-78880.herokuapp.com/callback'; // Your redirect uri
+var client_id = process.env.SPOTIFY_ID; // Your client id
+var client_secret = process.env.SPOTIFY_SECRET; // Your secret
+var redirect_uri = 
+// 'https://peaceful-everglades-78880.herokuapp.com/callback'; // Your redirect uri
+'http://localhost:8888/callback';
 
 /**
  * Generates a random string containing numbers and letters
@@ -46,12 +41,6 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-// var app = express();
-
-// app.use(express.static(__dirname + '/public'))
-//    .use(cors())
-//    .use(cookieParser());
-
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -61,7 +50,6 @@ module.exports = function(app) {
     db.Currents.findAll({
       attributes: ['rank', 'artist', 'song', 'album', 'year']
       }).then(function(dbCurrents) {
-          // console.log(dbCurrents)
           res.render("index", {top893: dbCurrents})
           
       });
@@ -117,7 +105,7 @@ module.exports = function(app) {
   
           access_token = body.access_token,
               refresh_token = body.refresh_token;
-          console.log(access_token)
+          
           spotifyApi.setAccessToken(access_token);
           var options = {
             url: 'https://api.spotify.com/v1/me',
@@ -129,7 +117,7 @@ module.exports = function(app) {
 
           // use the access token to access the Spotify Web API
           request.get(options, function(error, response, body) {
-            console.log(body);
+            // console.log(body);
           });
   
           // we can also pass the token to the browser to make requests from there
@@ -151,9 +139,6 @@ module.exports = function(app) {
   });
 
   
-  // spotifyApi.setAccessToken(access_token);
-  // console.log("access token;"+ access_token)
-  
   module.exports = {
     
     searchTracks: function (track, artist, callback){  spotifyApi.searchTracks('track:'+track+' artist:'+ artist,{limit: 5})
@@ -164,14 +149,3 @@ module.exports = function(app) {
   
 };
 }
-
-
-// module.exports = {
-    
-//     searchTracks: function (track, artist, callback){  spotifyApi.searchTracks('track:'+track+' artist:'+ artist,{limit: 5})
-//     .then(data => callback(data), err => console.log('Something went wrong!', err))}
-
-
-    
-  
-// };

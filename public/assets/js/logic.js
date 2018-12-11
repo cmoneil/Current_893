@@ -2,7 +2,7 @@ var playlist = [];
 var albumImg;
 var preview;
 var openSpotify;
-//var access_token;
+
 
 $(function () {
   $(document).on("click", ".addToPlaylist", function (event) {
@@ -11,25 +11,8 @@ $(function () {
     var artist = songInfo.artist;
     var song = songInfo.song;
     var year = songInfo.year
-    // console.log(id);
-    // console.log(songInfo.artist);
-    // console.log(songInfo.song)
 
     playlist.push(songInfo);
-    //console.log(playlist)
-
-    //   function getParameterByName(name, url) {
-    //     if (!url) url = window.location.href;
-    //     name = name.replace(/[\[\]]/g, "\\$&");
-    //     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    //         results = regex.exec(url);
-    //     if (!results) return null;
-    //     if (!results[2]) return '';
-    //     return decodeURIComponent(results[2].replace(/\+/g, " "));
-    // }
-
-    // var access=getParameterByName('#access_token')
-    // console.log(access)
 
 
     $.get("/api/spotify/" + artist + "/" + song, function (data) {
@@ -37,46 +20,46 @@ $(function () {
         preview = "No Preview Available"
       }
       else {
-        preview = `<a href=${data.preview_url} class="btn" data-toggle="modal" data-target="#exampleModal" id="#modalButton">Click</a>`
+        preview = `<a href=${data.preview_url} class="btn" data-toggle="modal" data-target="#exampleModal" data-img='${modalImg = data.album.images[1].url}' data-song='${songInfo.song}' data-artist='${songInfo.artist}'
+        id="#modalButton">Click</a>`
 
         // preview = `<a href=${data.preview_url} target="_blank">Preview</a>`
 
       }
 
-      openSpotify = data.external_urls.spotify
-      // preview = data.preview_url
-      albumImg = data.album.images[2].url
-      modalImg = data.album.images[1].url
-      console.log(data);
-      console.log(openSpotify)
+      openSpotify = data.external_urls.spotify;
+      
 
 
-
+      // List items for songs added to playlist
       $(".playTable").append(`<tr>
           <td id="playId">${songInfo.rank}</td>
-          <td><img src=${albumImg}></td>
-          
+          <td><img src=${data.album.images[2].url}></td>
           <td>${songInfo.artist}</td>
           <td>${songInfo.song}</td>
           <td class="numbers">${songInfo.album}</td>
           <td class="numbers">${songInfo.year}</td>
           <td>${preview}</td>
-          <td><a href=${openSpotify} target="_blank"><i class="fas fa-play"></i></a></td>
+          <td><a href=${openSpotify} target="_blank" ><i class="fas fa-play"></i></a></td>
           <<td><td<button data-playrank="${songInfo.rank}" class ="removeFrom btn btn-primary">Remove</button> </tr>`)
 
-          $("a.btn").on("click", function (e) {
-            console.log('click')
-            e.preventDefault();
-            var url = $(this).attr('href');
-            console.log(url);
-            console.log($(this))
-              $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" src="'+url+'"></iframe>')
-              $(".modal-title").html(songInfo.song)
-              $(".img-modal").html('<img src='+modalImg+'>')
-          });
-          
+// Launches modal when preview is clicked
+      $("a.btn").on("click", function (e) {
+        console.log('click')
+        e.preventDefault();
+        var url = $(this).attr('href');
+        let modalImg = $(this).attr('data-img')
+        let modalSong = $(this).attr('data-song')
+        let modalArtist = $(this).attr('data-artist')
+
+        $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" src="' + url + '"></iframe>')
+        $(".modal-artist").html(modalArtist)
+        $(".modal-title").html(modalSong)
+        $(".img-modal").html('<img src=' + modalImg + '>')
+      });
+
     })
-    
+
   })
 });
 
@@ -114,11 +97,6 @@ $(document).on("click", ".removeFrom", function (event) {
 
   $(this).parent().parent().remove();
 
-
-  // var result = $.grep(playlist, function(e){ 
-  //   return e.rank == id;
-  // } )
-
   for (var i = 0; i < playlist.length; i++) {
     if (playlist[i].rank == id) {
       console.log(playlist[i].rank);
@@ -127,32 +105,17 @@ $(document).on("click", ".removeFrom", function (event) {
     }
   }
 
-
-
-  // console.log(access_token)
-
   console.log(playlist)
 });
 
 $(document).on("click", ".userBtn", function (event) {
   event.preventDefault();
   var searchTerm = $("#searchName").val();
-  console.log(searchTerm)
-  $(this).closest('form').find("input[type=text], textarea").val("")
-  
-
-
-  // if (user){
-  //   updateUsers();
-  // }
-  // else{
-  //   createUser();
-  // }
-  
+  $(this).closest('form').find("input[type=text], textarea").val("");
 
   createUser({
     name: searchTerm,
-  })
+  });
 })
 
 
@@ -171,52 +134,3 @@ function createUser(userInfo) {
   //.then(getAuthors);
 }
 $(document).on("click")
-
-
-
-
-
-
-
-
-      // var burgerState = {
-      //   devoured: eat
-      // };
-      // console.log(burgerState)
-      // Send the PUT request.
-    //   $.ajax("/api/burgers/" + id, {
-    //     type: "PUT",
-    //     data: burgerState
-    //   }).then(
-    //     function() {
-    //       console.log("changed sleep to", burgerState);
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-
-    // $(".create-form").on("submit", function(event) {
-    //   // Make sure to preventDefault on a submit event.
-    //   event.preventDefault();
-
-    //   var newBurger = {
-    //     name: $("#ca").val().trim(),
-    //     devoured: false
-    //   };
-
-    //   // Send the POST request.
-    //   $.ajax("/api/burgers", {
-    //     type: "POST",
-    //     data: newBurger
-    //   }).then(
-    //     function() {
-    //       console.log("created new burger");
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-    // });
-
-
-
