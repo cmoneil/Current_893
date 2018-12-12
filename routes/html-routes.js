@@ -21,8 +21,8 @@ var db = require("../models")
 var client_id = process.env.SPOTIFY_ID; // Your client id
 var client_secret = process.env.SPOTIFY_SECRET; // Your secret
 var redirect_uri = 
-// 'https://peaceful-everglades-78880.herokuapp.com/callback'; // Your redirect uri
-'http://localhost:8888/callback';
+'https://peaceful-everglades-78880.herokuapp.com/callback'; // Your redirect uri
+// 'http://localhost:8888/callback';
 
 /**
  * Generates a random string containing numbers and letters
