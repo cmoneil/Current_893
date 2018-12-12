@@ -6,4 +6,3 @@ exports.spotify = {
   clientsecret: process.env.SPOTIFY_SECRET,
   redirectUri: 'http://localhost:8888/callback'
 };
-

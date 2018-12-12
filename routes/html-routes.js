@@ -131,7 +131,6 @@ module.exports = function(app) {
             querystring.stringify({
               error: 'invalid_token'
             }));
-            console.log('Token 1: '+access_token)
         }
       });
     }
