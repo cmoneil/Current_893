@@ -28,7 +28,7 @@
     "mysql2": "^1.5.3",
     "nmp": "^1.0.3",
     "node-spotify-api": "^1.0.7",
-    "npm": "^6.1.0",
+    "npm": "^6.5.0",
     "querystring": "^0.2.0",
     "request": "^2.87.0",
     "sequelize": "^4.38.0",
