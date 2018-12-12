@@ -20,30 +20,28 @@ $(function () {
         preview = "No Preview Available"
       }
       else {
-        preview = `<a href=${data.preview_url} class="btn" data-toggle="modal" data-target="#exampleModal" data-img='${modalImg = data.album.images[1].url}' data-song='${songInfo.song}' data-artist='${songInfo.artist}'
+        preview = `<a href=${data.preview_url} class="btn" data-toggle="modal" data-target="#exampleModal" data-img='${data.album.images[1].url}' data-song='${songInfo.song}' data-artist='${songInfo.artist}'
         id="#modalButton">Click</a>`
-
-        // preview = `<a href=${data.preview_url} target="_blank">Preview</a>`
 
       }
 
       openSpotify = data.external_urls.spotify;
-      
+
 
 
       // List items for songs added to playlist
       $(".playTable").append(`<tr>
           <td id="playId">${songInfo.rank}</td>
-          <td><img src=${data.album.images[2].url}></td>
           <td>${songInfo.artist}</td>
           <td>${songInfo.song}</td>
+          <td><img src=${data.album.images[2].url}></td>
           <td class="numbers">${songInfo.album}</td>
           <td class="numbers">${songInfo.year}</td>
           <td>${preview}</td>
           <td><a href=${openSpotify} target="_blank" ><i class="fas fa-play"></i></a></td>
           <<td><td<button data-playrank="${songInfo.rank}" class ="removeFrom btn btn-primary">Remove</button> </tr>`)
 
-// Launches modal when preview is clicked
+      // Launches modal when preview is clicked
       $("a.btn").on("click", function (e) {
         console.log('click')
         e.preventDefault();

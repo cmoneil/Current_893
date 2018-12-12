@@ -18,7 +18,12 @@ body {
     padding-bottom: 65px;
   
   }
-  .tableScroll{
+
+  .resultTable {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .tableScroll {
     height: 500px;
     overflow: scroll;
   }
@@ -64,7 +69,8 @@ body {
   }
   
   .playlistTable{
-    width: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .searchTable {
     margin-top: 0px;

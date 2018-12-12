@@ -10,7 +10,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var spotifyApi = new SpotifyWebApi(keys.spotify);
 
 // console.log(spotAccess)
-spotifyApi.setAccessToken('BQA9z-zFgUf8g_CN8ZR_p-SrOTXawrrF8CQEeX7u_jVg4-za_reg396fjP59KHvgTfZ6EoDMO6x37cTqhdn8aXoxLQS8lDzyTHiNKbYN2DXro24ZKD76Apr_7FGWfYnH1DB6-4h9MTvVPQiYeHwI343WUCD4-o1K_nk&refresh_token=AQA4Kg91r82wSH1hYd2qjXE5gy2i1reHO6IYN_b0r7SaIVz6f2Aj_Q0vB2Xc2lPkY2Wv13Q48lBdX9KbUaES3TwAdZmdes74Oj0OjYfySPsQJkXPmeN5Q-TFl9Bsg7jlNOo');
+spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESS_TOKEN);
 
 module.exports = {
     
